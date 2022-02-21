@@ -1,8 +1,11 @@
 const express = require('express');
 const cors = require('cors')
-const mysql = require ('./config/ConexionMySQL')
+const mysql = require ('./config/ConexionMySQL');
+const connection = require('./config/ConexionMySQL');
 const app = express();
-const users=[{"nombre":"unnombre"},{"edad":"3"}]
+app.listen(3002, () => {
+    console.log('Server on port 3001');
+});
 /* instalar nodemon -D
 para ejecutar el servidor seria
 npx nodemon index.js */
@@ -12,14 +15,13 @@ app.get('/',(req,res) => {
     res.send('Hello Word');
 });
 app.get('/mirar',(req,res) => {
-    mysql.query('SELECT * FROM `articulos`')
+    connection.query('SELECT * FROM `articulos`', function(err, rows, fields) 
+    {
+        res.json(rows);
+    });
 });
-app.get('/getInventario',(req,res)=>{
-    res.json(users)
-})
-app.listen(3001, () => {
-    console.log('Server on port 3001');
-});
+
+
 /*
 En modelos va 
 en controller va enruta la vista con su req y su res

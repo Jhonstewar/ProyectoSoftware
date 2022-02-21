@@ -14,7 +14,7 @@ connection.connect(function(error){
       console.log('Conexion correcta.');
    }
 });
-connection.query(`create table articulos (
+/*connection.query(`create table articulos (
     codigo int primary key auto_increment,
     descripcion varchar(50),
     precio float
@@ -23,5 +23,6 @@ if (error) {
 console.log(error);				
 return;
 }
-  });
+  });*/
 //connection.end();
+module.exports= connection
