@@ -1,5 +1,8 @@
 const express = require('express');
+const cors = require('cors')
+const mysql = require ('./config/ConexionMySQL')
 const app = express();
+const users=[{"nombre":"unnombre"},{"edad":"3"}]
 /* instalar nodemon -D
 para ejecutar el servidor seria
 npx nodemon index.js */
@@ -8,8 +11,14 @@ npx nodemon index.js */
 app.get('/',(req,res) => {
     res.send('Hello Word');
 });
+app.get('/mirar',(req,res) => {
+    mysql.query('SELECT * FROM `articulos`')
+});
+app.get('/getInventario',(req,res)=>{
+    res.json(users)
+})
 app.listen(3001, () => {
-    console.log('Server on port 3000');
+    console.log('Server on port 3001');
 });
 /*
 En modelos va 
