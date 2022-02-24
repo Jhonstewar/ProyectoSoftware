@@ -9,6 +9,6 @@ const controller = require('../controllers/index_controllers')
 
 router.get('/',cors(),controller.uno)
 
-router.get('/mirar',controller.dos)
+router.get('/getInventario',cors(),controller.dos)
 
 module.exports = router
