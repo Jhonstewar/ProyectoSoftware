@@ -1,11 +1,13 @@
 const express = require('express');
 const cors = require('cors')
+
 const mysql = require ('./config/ConexionMySQL');
 const connection = require('./config/ConexionMySQL');
 const routes = require('./src/routes/index_routes')
 
+const body = require('body-parser');
 const app = express();
-
+app.use(body.urlencoded({extended:true}));
 app.use(cors())
 app.use(routes)
 app.listen(3001, () => {

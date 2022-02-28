@@ -1,5 +1,6 @@
 const { request } = require('http');
 const path = require('path')
+const body = require('body-parser');
 
 const cors = require('cors')
 
@@ -19,5 +20,14 @@ controller.dos=(req,res) => {
         res.json(rows);
     });
 }
+
+controller.insertar=(req,res) => {
+    var codigo = req.query.codigo
+    var descripcion = req.query.descripcion
+    var precio = req.query.precio
+    connection.query('UPDATE articulos set descripcion = "'+descripcion+'", precio = "'+precio+'" where codigo = '+codigo)
+   res.send("exitoso")   
+}
+
 
 module.exports = controller

@@ -11,4 +11,6 @@ router.get('/',cors(),controller.uno)
 
 router.get('/getInventario',cors(),controller.dos)
 
+router.post('/modInventario',cors(),controller.insertar)
+
 module.exports = router
