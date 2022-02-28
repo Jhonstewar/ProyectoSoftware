@@ -1,6 +1,6 @@
-const { request } = require('http');
+const { request } = require('http')
 const path = require('path')
-const body = require('body-parser');
+
 
 const cors = require('cors')
 
@@ -15,18 +15,30 @@ controller.uno = (req, res) =>{
 }
 
 controller.dos=(req,res) => {
-    connection.query('SELECT * FROM `articulos`', function(err, rows, fields) 
+    connection.query('SELECT * FROM `articulos` ORDER BY codigo DESC;', function(err, rows, fields) 
     {
         res.json(rows);
     });
 }
 
 controller.insertar=(req,res) => {
-    var codigo = req.query.codigo
-    var descripcion = req.query.descripcion
-    var precio = req.query.precio
+    const body = require('body-parser');
+    var codigo = req.body.codigo
+    var descripcion = req.body.descripcion
+    var precio = req.body.precio
+    connection.query('INSERT INTO articulos VALUES ("'+codigo+'", "'+descripcion+'","'+precio+'")')
+     res.send("exit")   
+    
+}
+
+controller.modificar=(req,res) => {
+    const body = require('body-parser');
+    var codigo = req.body.codigo
+    var descripcion = req.body.descripcion
+    var precio = req.body.precio
     connection.query('UPDATE articulos set descripcion = "'+descripcion+'", precio = "'+precio+'" where codigo = '+codigo)
-   res.send("exitoso")   
+   res.send("exit")   
+    
 }
 
 
