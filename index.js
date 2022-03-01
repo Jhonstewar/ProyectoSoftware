@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors')
+
 
 
 const mysql = require ('./config/ConexionMySQL');
@@ -8,6 +8,7 @@ const routes = require('./src/routes/index_routes')
 
 const body = require('body-parser');
 const app = express();
+const cors = require('cors')
 
 app.use(cors())
 app.use(body.json())

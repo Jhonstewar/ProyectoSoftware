@@ -26,7 +26,12 @@ controller.insertar=(req,res) => {
     var codigo = req.body.codigo
     var descripcion = req.body.descripcion
     var precio = req.body.precio
-    connection.query('INSERT INTO articulos VALUES ("'+codigo+'", "'+descripcion+'","'+precio+'")')
+    connection.query('INSERT INTO articulos VALUES ("'+codigo+'", "'+descripcion+'","'+precio+'")',(error,resultado) => {
+        if (error) {
+            console.log(error.sqlMessage)                         
+            return;
+        }
+    });
      res.send("exit")   
     
 }
@@ -36,7 +41,12 @@ controller.modificar=(req,res) => {
     var codigo = req.body.codigo
     var descripcion = req.body.descripcion
     var precio = req.body.precio
-    connection.query('UPDATE articulos set descripcion = "'+descripcion+'", precio = "'+precio+'" where codigo = '+codigo)
+    connection.query('UPDATE articulos set descripcion = "'+descripcion+'", precio = "'+precio+'" where codigo = '+codigo,(error,resultado) => {
+        if (error) {  
+            console.log(error.sqlMessage)                      
+            return;
+        }
+    });
    res.send("exit")   
     
 }
