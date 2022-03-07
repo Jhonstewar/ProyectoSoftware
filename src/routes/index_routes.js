@@ -12,10 +12,10 @@ router.get('/',cors(),controller.uno)
 
 router.get('/getInventario',cors(),controller.dos)
 
-router.post('/modInventario',body.urlencoded({extended:false}),controller.modificar)
+router.put('/modInventario',body.urlencoded({extended:false}),controller.modificar)
 
 router.post('/addInventario',body.urlencoded({extended:false}),controller.insertar)
 
-router.post('/getInventarioById',body.urlencoded({extended:false}),controller.filtrarById)
+router.post('/getInventarioById',cors(),body.urlencoded({extended:false}),controller.filtrarById)
 
 module.exports = router

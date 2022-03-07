@@ -67,16 +67,13 @@ controller.modificar=(req,res) => {
 
 controller.filtrarById=(req,res) => {
     const body = require('body-parser');
-    var codigo = req.body.codigo
+    let codigo = req.query.codigo
     console.log(codigo)
-  /*
-    connection.query( 'SELECT  * FROM articulos WHERE codigo="'+codigo+'"',(error,resultado) => {
-        if (error) {  
-            console.log(error.sqlMessage)                      
-            return;
-        }
-    });
-    res.json(rows); */
+  
+    connection.query('SELECT * FROM `articulos` WHERE codigo ="'+codigo+'"', function(err, rows, fields) 
+        {
+            res.json(rows);
+        });
 }
 
 
