@@ -61,13 +61,13 @@ controller.insertar=(req,res) => {
      res.send("exit")   
     
 }
-controller.eliminar=(req) => {
+controller.eliminar=(req,res) => {
     const body = require('body-parser');
-    let codigo = req.query.codigo
+    var codigo = req.body.codigo
     console.log(codigo)
     
     connection.query('DELETE FROM articulos WHERE codigo = "'+codigo+'"')
-        return;
+        res.send("exit")
         
     
 }
