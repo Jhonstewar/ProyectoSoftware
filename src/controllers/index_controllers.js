@@ -5,6 +5,7 @@ const path = require('path')
 const cors = require('cors')
 
 const connection = require('../../config/ConexionMySQL');
+const { NULL } = require('mysql/lib/protocol/constants/types');
 
 
 var cont = 0;
@@ -15,10 +16,22 @@ controller.uno = (req, res) =>{
 }
 
 controller.dos=(req,res) => {
+    const body = require('body-parser');
+    let codigo = req.query.codigo
+    
+    console.log(codigo)
+    if(!codigo|| codigo ==undefined){
     connection.query('SELECT * FROM `articulos` ORDER BY codigo DESC;', function(err, rows, fields) 
     {
+        console.log(codigo)
         res.json(rows);
     });
+    }else{
+        connection.query('SELECT * FROM `articulos` WHERE codigo ="'+codigo+'"', function(err, rows, fields) 
+        {
+            res.json(rows);
+        });   
+    }
 }
 
 controller.insertar=(req,res) => {
@@ -41,7 +54,8 @@ controller.modificar=(req,res) => {
     var codigo = req.body.codigo
     var descripcion = req.body.descripcion
     var precio = req.body.precio
-    connection.query('UPDATE articulos set descripcion = "'+descripcion+'", precio = "'+precio+'" where codigo = '+codigo,(error,resultado) => {
+    console.log(codigo)
+    connection.query('UPDATE articulos set descripcion = "'+descripcion+'", precio = "'+precio+'" where codigo = '+codigo,(error,rows,fields) => {
         if (error) {  
             console.log(error.sqlMessage)                      
             return;
@@ -49,6 +63,20 @@ controller.modificar=(req,res) => {
     });
    res.send("exit")   
     
+}
+
+controller.filtrarById=(req,res) => {
+    const body = require('body-parser');
+    var codigo = req.body.codigo
+    console.log(codigo)
+  /*
+    connection.query( 'SELECT  * FROM articulos WHERE codigo="'+codigo+'"',(error,resultado) => {
+        if (error) {  
+            console.log(error.sqlMessage)                      
+            return;
+        }
+    });
+    res.json(rows); */
 }
 
 

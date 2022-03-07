@@ -16,5 +16,6 @@ router.post('/modInventario',body.urlencoded({extended:false}),controller.modifi
 
 router.post('/addInventario',body.urlencoded({extended:false}),controller.insertar)
 
+router.post('/getInventarioById',body.urlencoded({extended:false}),controller.filtrarById)
 
 module.exports = router
