@@ -12,6 +12,8 @@ router.get('/',cors(),controller.uno)
 
 router.get('/getInventario',cors(),controller.dos)
 
+router.get('/asignarId',cors(),controller.asignarId)
+
 router.put('/modInventario',body.urlencoded({extended:false}),controller.modificar)
 
 router.post('/addInventario',body.urlencoded({extended:false}),controller.insertar)

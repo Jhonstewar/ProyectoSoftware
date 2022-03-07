@@ -6,6 +6,7 @@ const cors = require('cors')
 
 const connection = require('../../config/ConexionMySQL');
 const { NULL } = require('mysql/lib/protocol/constants/types');
+const { query } = require('express');
 
 
 var cont = 0;
@@ -32,6 +33,18 @@ controller.dos=(req,res) => {
             res.json(rows);
         });   
     }
+}
+
+controller.asignarId=(req,res)=>{
+    const body = require('body-parser');
+    var codigoAnte=connection.query('SELECT MAX(codigo)+1 AS codigo FROM articulos   ',(error,resultado) => 
+    
+    {
+        console.log(resultado)
+
+        res.json(resultado)
+        //return
+    })
 }
 
 controller.insertar=(req,res) => {
