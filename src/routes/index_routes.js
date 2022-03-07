@@ -16,6 +16,8 @@ router.put('/modInventario',body.urlencoded({extended:false}),controller.modific
 
 router.post('/addInventario',body.urlencoded({extended:false}),controller.insertar)
 
+router.delete('/eliminarProducto',body.urlencoded({extended:false}),controller.eliminar)
+
 router.post('/getInventarioById',cors(),body.urlencoded({extended:false}),controller.filtrarById)
 
 module.exports = router

@@ -48,6 +48,16 @@ controller.insertar=(req,res) => {
      res.send("exit")   
     
 }
+controller.eliminar=(req) => {
+    const body = require('body-parser');
+    let codigo = req.query.codigo
+    console.log(codigo)
+    
+    connection.query('DELETE FROM articulos WHERE codigo = "'+codigo+'"')
+        return;
+        
+    
+}
 
 controller.modificar=(req,res) => {
     const body = require('body-parser');
