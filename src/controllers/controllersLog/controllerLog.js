@@ -25,7 +25,7 @@ controllerlog.insertarusuario = (req,res) => {
             pApellido = req.body.pApellido,
             sApellido = req.body.sApellido,
             correo    = req.body.correo,
-            contrasena=  req.body.contrasena,//connection.query('AES_ENCRYPT("'+pNombre+'", UNHEX("F3229A0B371ED2D9441B830D21A390C3"))'),
+            contrasena=  req.body.cedula,//connection.query('AES_ENCRYPT("'+pNombre+'", UNHEX("F3229A0B371ED2D9441B830D21A390C3"))'),
             console.log(contrasena),
             estado    = 1,
             fCreacion = date.toISOString().split('T')[0],
