@@ -10,6 +10,7 @@ const controllerlog = {}
 //Crear nuevo usuario
 controllerlog.insertarusuario = (req,res) => {               
       //(cedula,id,pNombre,sNombre,pApellido,sApellido,correo,contrasena,estado,fCreacion,fAcceso)
+      //console.log(connection.query('AES_ENCRYPT("'+req.query.pNombre+'", UNHEX("F3229A0B371ED2D9441B830D21A390C3"))'))
     const body = require('body-parser');
     console.log(req.query);
     let date = new Date();
@@ -17,14 +18,15 @@ controllerlog.insertarusuario = (req,res) => {
     var values=[
         [  
             
-            cedula    = req.query.cedula,
-            id        = req.query.id,
-            pNombre   = req.query.pNombre,
-            sNombre   = req.query.sNombre,
-            pApellido = req.query.pApellido,
-            sApellido = req.query.sApellido,
-            correo    = req.query.correo,
-            contrasena= req.query.contrasena,
+            cedula    = req.body.cedula,
+            id        = req.body.id,
+            pNombre   = req.body.pNombre,
+            sNombre   = req.body.sNombre,
+            pApellido = req.body.pApellido,
+            sApellido = req.body.sApellido,
+            correo    = req.body.correo,
+            contrasena=  req.body.contrasena,//connection.query('AES_ENCRYPT("'+pNombre+'", UNHEX("F3229A0B371ED2D9441B830D21A390C3"))'),
+            console.log(contrasena),
             estado    = 1,
             fCreacion = date.toISOString().split('T')[0],
             fAcceso   = date.toISOString().split('T')[0]+' '+date.toLocaleString().split(' ')[1]
